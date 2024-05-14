@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -12,6 +13,8 @@ class BookingController extends Controller
      */
     public function index()
     {
+        dd(Booking::all());
+
         return 'Bookings';
     }
 
@@ -20,7 +23,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.booking.create');
     }
 
     /**
@@ -28,7 +31,26 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email'=>'required|email',
+            'date_time' => 'required',
+            'number_of_persons' => 'required',
+            'special_request'
+        ]);
+        $d = $request->date_time;
+
+        $date = strtotime($d);
+        $date =date ('o-m-d H:i', $date);
+
+        Booking::query()->create([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'date_time'=>$date,
+            'number_of_persons'=>$request->number_of_persons,
+            'special_request'=>$request->special_request,
+        ]);
+        dd($request->all());
     }
 
     /**

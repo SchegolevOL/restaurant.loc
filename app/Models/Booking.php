@@ -9,6 +9,13 @@ class Booking extends Model
 {
     use Sluggable;
     use HasFactory;
+    protected $fillable=[
+        'name',
+        'email',
+        'date_time',
+        'number_of_persons',
+        'special_request'
+    ];
     public function sluggable(): array
     {
         return [

@@ -11,6 +11,12 @@ class Menu extends Model
 {
     use Sluggable;
     use HasFactory;
+    protected $fillable=[
+        'title',
+        'description',
+        'image',
+        'price',
+    ];
     public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class);

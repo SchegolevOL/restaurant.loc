@@ -25,3 +25,4 @@ Route::prefix('admin')->group(function (){
     Route::resource('types',\App\Http\Controllers\admin\TypeController::class);
     Route::resource('designations',\App\Http\Controllers\admin\DesignationController::class);
 });
+Route::resource('resister', \App\Http\Controllers\admin\RegisterController::class);

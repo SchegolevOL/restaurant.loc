@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller
@@ -12,7 +13,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        dump(Type::all('id', 'title'));
+        return view('admin.type.index');
     }
 
     /**
@@ -20,7 +22,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.type.create');
     }
 
     /**
@@ -28,7 +30,11 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:App\Models\Type,title',
+        ]);
+        Type::query()->create($request->all());
+        return redirect()->route('types.index');
     }
 
     /**

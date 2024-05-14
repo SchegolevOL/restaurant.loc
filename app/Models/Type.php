@@ -15,7 +15,9 @@ class Type extends Model
     {
         return $this->belongsToMany(Menu::class);
     }
-
+    protected $fillable =[
+        'title',
+    ];
 
     /**
      * Return the sluggable configuration array for this model.
