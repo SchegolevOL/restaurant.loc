@@ -51,8 +51,8 @@
                 <div class="navbar-nav ms-auto py-0 pe-4">
                     <a href="{{route('home')}}" class="nav-item nav-link @php if($title=='home')echo'active' @endphp">Home</a>
                     <a href="{{route('about')}}" class="nav-item nav-link @php if($title=='about')echo'active' @endphp">About</a>
-                    <a href="{{route('service')}}" class="nav-item nav-link">Service</a>
-                    <a href="{{route('menu')}}" class="nav-item nav-link">Menu</a>
+                    <a href="{{route('service')}}" class="nav-item nav-link @php if($title=='service')echo'active' @endphp">Service</a>
+                    <a href="{{route('menu')}}" class="nav-item nav-link @php if($title=='menu')echo'active' @endphp">Menu</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle @php if($title=='team'||$title=='booking'||$title=='testimonial')echo'active' @endphp" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
@@ -62,8 +62,26 @@
                         </div>
                     </div>
                     <a href="{{route('contact')}}" class="nav-item nav-link @php if($title=='contact')echo'active' @endphp">Contact</a>
+
+@guest()
+                    <a href="{{route('register.create')}}" class="nav-item nav-link @php if($title=='register')echo'active' @endphp">Register</a>
+                    <a href="{{route('register.loginForm')}}" class="nav-item nav-link @php if($title=='login')echo'active' @endphp">Login</a>
+                    @endguest
+                        @auth()
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{auth()->user()->name}}</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="{{route('booking')}}" class="dropdown-item">Booking</a>
+                                <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
+                                <a href="{{route('testimonial')}}" class="dropdown-item">Testimonial</a>
+                            </div>
+                        </div>
+                        <a href="{{route('register.logout')}}" class="nav-item nav-link )echo'active' @endphp">Logout</a>
+                        @endauth
                 </div>
+
                 <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
+
             </div>
         </nav>
         @yield('nav-bar-content')

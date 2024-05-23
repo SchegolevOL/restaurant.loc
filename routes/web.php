@@ -21,7 +21,12 @@ Route::get('/menu', [\App\Http\Controllers\front\FrontController::class, 'menu']
 Route::get('/service', [\App\Http\Controllers\front\FrontController::class, 'service'])->name('service');
 Route::get('/team', [\App\Http\Controllers\front\FrontController::class, 'team'])->name('team');
 Route::get('/testimonial', [\App\Http\Controllers\front\FrontController::class, 'testimonial'])->name('testimonial');
-
+Route::get('/register', [\App\Http\Controllers\user\UserController::class, 'create'])->name('register.create');
+Route::get('/login', [\App\Http\Controllers\user\UserController::class, 'loginForm'])->name('register.loginForm');
+Route::post('/register', [\App\Http\Controllers\user\UserController::class, 'store'])->name('register.store');
+Route::post('/login', [\App\Http\Controllers\user\UserController::class, 'login'])->name('register.login');
+Route::get('/logout', [\App\Http\Controllers\user\UserController::class, 'logout'])->name('register.logout');
+Route::post('/login', [\App\Http\Controllers\front\FrontController::class, 'store'])->name('store');
 
 
 Route::prefix('admin')->group(function (){
