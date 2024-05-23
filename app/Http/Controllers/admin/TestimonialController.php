@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
@@ -12,7 +13,8 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        dump(Testimonial::all());
+        return view('admin.testimonial.index');
     }
 
     /**
@@ -20,7 +22,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimonial.create');
     }
 
     /**
@@ -28,7 +30,17 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'title' => 'required',
+            'cont' => 'required',
+        ]);
+        Testimonial::query()->create([
+            'title'=>$request->title,
+            'content'=>$request->cont,
+            'user_id'=>0,//todo add user_id
+        ]);
+        return redirect()->route('testimonials.index');
     }
 
     /**

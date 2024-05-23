@@ -13,9 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\front\FrontController::class, 'home'])->name('home');
+Route::get('/booking', [\App\Http\Controllers\front\FrontController::class, 'booking'])->name('booking');
+Route::get('/about', [\App\Http\Controllers\front\FrontController::class, 'about'])->name('about');
+Route::get('/contact', [\App\Http\Controllers\front\FrontController::class, 'contact'])->name('contact');
+Route::get('/menu', [\App\Http\Controllers\front\FrontController::class, 'menu'])->name('menu');
+Route::get('/service', [\App\Http\Controllers\front\FrontController::class, 'service'])->name('service');
+Route::get('/team', [\App\Http\Controllers\front\FrontController::class, 'team'])->name('team');
+Route::get('/testimonial', [\App\Http\Controllers\front\FrontController::class, 'testimonial'])->name('testimonial');
+
+
+
 Route::prefix('admin')->group(function (){
     Route::resource('menus',\App\Http\Controllers\admin\MenuController::class);
     Route::resource('chiefs',\App\Http\Controllers\admin\ChiefController::class);

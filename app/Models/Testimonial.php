@@ -10,7 +10,11 @@ class Testimonial extends Model
 {
     use HasFactory;
     use Sluggable;
-
+    protected $fillable =[
+        'title',
+        'content',
+        'user_id',
+    ];
     /**
      * Return the sluggable configuration array for this model.
      *
