@@ -26,7 +26,7 @@ Route::get('/login', [\App\Http\Controllers\user\UserController::class, 'loginFo
 Route::post('/register', [\App\Http\Controllers\user\UserController::class, 'store'])->name('register.store');
 Route::post('/login', [\App\Http\Controllers\user\UserController::class, 'login'])->name('register.login');
 Route::get('/logout', [\App\Http\Controllers\user\UserController::class, 'logout'])->name('register.logout');
-Route::post('/login', [\App\Http\Controllers\front\FrontController::class, 'store'])->name('store');
+Route::post('/booking', [\App\Http\Controllers\front\FrontController::class, 'store'])->name('store');
 
 
 Route::prefix('admin')->group(function (){

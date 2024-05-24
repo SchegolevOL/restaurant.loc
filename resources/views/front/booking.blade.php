@@ -14,8 +14,10 @@
     </div>
 @endsection
 @section('content')
+
     <!-- Reservation Start -->
     <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+        @include('components.messages')
         <div class="row g-0">
             <div class="col-md-6">
                 <div class="video">

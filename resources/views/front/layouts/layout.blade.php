@@ -71,12 +71,13 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{auth()->user()->name}}</a>
                             <div class="dropdown-menu m-0">
-                                <a href="{{route('booking')}}" class="dropdown-item">Booking</a>
-                                <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
-                                <a href="{{route('testimonial')}}" class="dropdown-item">Testimonial</a>
+                                <a href="" class="dropdown-item">Profile</a>
+                                <a href="" class="dropdown-item">Admin Panel</a>
+                                <a href="{{route('register.logout')}}" class="dropdown-item">Logout</a>
+
                             </div>
                         </div>
-                        <a href="{{route('register.logout')}}" class="nav-item nav-link )echo'active' @endphp">Logout</a>
+
                         @endauth
                 </div>
 
