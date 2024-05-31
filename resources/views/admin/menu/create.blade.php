@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('admin.layouts.layout')
 @section('content')
     <div class="container">
         @include('components.messages')
@@ -23,20 +23,17 @@
                     <input name="price" type="text" class="form-control" placeholder="Enter price">
                 </div>
 
-                <div class="col-sm-6">
-                    <!-- Select multiple-->
-                    <div class="form-group">
-                        <label>Select Multiple</label>
-                        <select name="types[]" multiple="" class="form-control">
-                            @foreach($types as $type)
-                                <option value="{{$type->id}}" data-select2-id="{{$type->id}}">{{$type->title}}</option>
 
-                            @endforeach
-                        </select>
-                    </div>
+                <!-- Select multiple-->
+                <div class="form-group">
+                    <label>Select Multiple</label>
+                    <select name="types[]" multiple="" class="form-control">
+                        @foreach($types as $type)
+                            <option value="{{$type->id}}" data-select2-id="{{$type->id}}">{{$type->title}}</option>
+
+                        @endforeach
+                    </select>
                 </div>
-
-
 
 
                 <div class="form-group">
@@ -55,11 +52,11 @@
 
             </div>
             <!-- /.card-body -->
-    </div>
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Create</button>
-    </div>
-    </form>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
 
     </div>
 

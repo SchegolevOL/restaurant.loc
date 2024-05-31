@@ -1,5 +1,6 @@
-@extends('layouts.layout')
+@extends('admin.layouts.layout')
 @section('content')
+
     <div class="container">
         @include('components.messages')
         <form action="{{route('types.store')}}" method="post">

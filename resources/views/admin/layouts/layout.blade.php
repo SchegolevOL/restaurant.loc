@@ -33,8 +33,9 @@
     <title>Document</title>
 </head>
 <body>
-@yield('content')
 
+
+@include('admin.components.nav-bar')
 
 
 <!-- jQuery -->

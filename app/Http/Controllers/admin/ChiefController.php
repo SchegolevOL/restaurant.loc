@@ -14,9 +14,9 @@ class ChiefController extends Controller
      */
     public function index()
     {
-        $chiefs = Chief::all();
-        dump($chiefs->all());
-        return'index';
+        $chiefs = Chief::query()->select('slug', 'first_name', 'last_name','patronymic')->paginate(10);
+
+        return view('admin.chief.index', compact('chiefs'));
     }
 
     /**
@@ -45,8 +45,11 @@ class ChiefController extends Controller
             'twitter',
             'email' => 'required|email|unique:App\Models\Chief,email',
             'photo' => 'required|image',
+            'address' => 'required',
+            'description' => 'required',
         ]);
         $path = $request->file('photo')->store('images/chief');
+        $path = "/public/".$path;
         Chief::query()->create([
             'designation_id'=> $request->designation,
             'first_name' => $request->first_name,
@@ -58,6 +61,10 @@ class ChiefController extends Controller
             'facebook' => $request->facebook,
             'twitter' => $request->twitter,
             'email' => $request->email,
+            'address' => $request->address,
+            'description' => $request->description,
+            'salary' => $request->salary,
+            'rating'=>'0',
             'image' => $path,
         ]);
 
@@ -68,17 +75,21 @@ class ChiefController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+
+        $chief = Chief::query()->where('slug', $slug)->first();
+        $designation = Designation::query()->find($chief->designation_id);
+        return view('admin.chief.show', compact('chief', 'designation'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $chief = Chief::query()->where('slug', $slug)->first();
+        return view('admin.chief.edit', compact('chief'));
     }
 
     /**

@@ -23,6 +23,10 @@ class Chief extends Model
         'designation_id',
         'email',
         'image',
+        'address',
+        'rating',
+        'salary',
+        'description',
     ];
     public function sluggable(): array
     {

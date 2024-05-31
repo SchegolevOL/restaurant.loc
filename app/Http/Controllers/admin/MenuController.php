@@ -14,8 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        dump(Menu::all());
-        return view('admin.menu.index');
+        $menus = Menu::query()->paginate();
+        return view('admin.menu.index', compact('menus'));
     }
 
     /**
