@@ -5,7 +5,12 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Chief;
 use App\Models\Designation;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+
 
 class ChiefController extends Controller
 {
@@ -44,30 +49,15 @@ class ChiefController extends Controller
             'facebook',
             'twitter',
             'email' => 'required|email|unique:App\Models\Chief,email',
-            'photo' => 'required|image',
+            'image' => 'required|image',
             'address' => 'required',
             'description' => 'required',
+           'salary'=>'required',
         ]);
-        $path = $request->file('photo')->store('images/chief');
-        $path = "/public/".$path;
-        Chief::query()->create([
-            'designation_id'=> $request->designation,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'patronymic' => $request->patronymic,
-            'date_of_birth' => $request->date_of_birth,
-            'phone' => $request->phone,
-            'instagram' => $request->instagram,
-            'facebook' => $request->facebook,
-            'twitter' => $request->twitter,
-            'email' => $request->email,
-            'address' => $request->address,
-            'description' => $request->description,
-            'salary' => $request->salary,
-            'rating'=>'0',
-            'image' => $path,
-        ]);
-
+        $date = $request->all();
+        $date['image'] = Chief::uploadImage($request);
+        $date['rating'] = 0;
+        Chief::query()->create($date);
         return redirect()->route('chiefs.index');
 
     }
@@ -89,22 +79,54 @@ class ChiefController extends Controller
     public function edit(string $slug)
     {
         $chief = Chief::query()->where('slug', $slug)->first();
-        return view('admin.chief.edit', compact('chief'));
+        $designations = Designation::all('id', 'title');
+        return view('admin.chief.edit', compact('chief', 'designations'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        //
+        $date = $request->all();
+
+        $chief = Chief::query()->where('slug', $slug)->first();
+        $validatePhone=$chief->phone == $date['phone']?'required':'required|unique:App\Models\Chief,phone';
+        $validateEmail=$chief->email == $date['email']?'required|email':'required|email|unique:App\Models\Chief,email';
+        $validateImage = $request->file('photo')==null?'':'required|image';
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'patronymic',
+            'date_of_birth' => 'required',
+            'phone' => $validatePhone,
+            'designation_id'=>'integer',
+            'instagram',
+            'facebook',
+            'twitter',
+            'email' => $validateEmail,
+            'photo' => $validateImage,
+            'address' => 'required',
+            'description' => 'required',
+            'salary'=>'required',
+        ]);
+
+        $date['image'] = Chief::uploadImage($request, $request->old_image);
+        $date['rating'] = 0;
+        $chief->update($date);
+
+        return redirect()->route('chiefs.index')->with('success', 'The change has been saved');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+
+        $chief = Chief::query()->where('slug', $slug)->first();
+        Storage::delete($chief->image);
+        $chief->delete();
+        return redirect()->route('chiefs.index')->with('success', 'The record has been deleted');
     }
 }

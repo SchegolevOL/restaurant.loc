@@ -4,6 +4,9 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Chief;
+use App\Models\Menu;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -18,8 +21,9 @@ class FrontController extends Controller
     public function about()
     {
         $title='about';
+        $chiefs = Chief::query()->inRandomOrder()->limit(4)->get();
 
-        return view('front.about', compact('title'));
+        return view('front.about', compact('title', 'chiefs'));
     }
 
     public function testimonial()
@@ -50,7 +54,10 @@ class FrontController extends Controller
     public function menu()
     {
         $title='menu';
-        return view('front.menu', compact('title'));
+        $types = Type::query()->with('menus')->get();
+
+
+        return view('front.menu', compact('title', 'types'));
     }
 
     public function service()

@@ -13,31 +13,38 @@
             </thead>
             <tbody>
             @foreach($chiefs as $chief)
-            <tr>
-                <td>183</td>
-                <td>{{$chief->first_name}}</td>
-                <td>{{$chief->last_name}}</td>
-                <td>{{$chief->patronymic}}</td>
+                <tr>
+                    <td>183</td>
+                    <td>{{$chief->first_name}}</td>
+                    <td>{{$chief->last_name}}</td>
+                    <td>{{$chief->patronymic}}</td>
 
-                <td class="project-actions text-right">
-                    <a class="btn btn-primary btn-sm" href="{{route('chiefs.show',['chief'=>$chief->slug])}}">
-                        <i class="fas fa-folder">
-                        </i>
-                        View
-                    </a>
-                    <a class="btn btn-info btn-sm" href="{{route('chiefs.edit',['chief'=>$chief->slug])}}">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Edit
-                    </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>
+                    <td class="project-actions text-right">
+                        <a class="btn btn-primary btn-sm float-left" href="{{route('chiefs.show',['chief'=>$chief->slug])}}">
+                            <i class="fas fa-folder">
+                            </i>
+                            View
+                        </a>
+                        <a class="btn btn-info btn-sm float-left" href="{{route('chiefs.edit',['chief'=>$chief->slug])}}">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            Edit
+                        </a>
+                        <form
+                            action="{{ route('chiefs.destroy', ['chief' => $chief->slug]) }}"
+                            method="post" class="float-left">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Confirm the deletion')">
+                                <i
+                                    class="fas fa-trash-alt"></i>Delete
+                            </button>
+                        </form>
 
-                </td>
-            </tr>
+
+                    </td>
+                </tr>
             @endforeach
 
             </tbody>

@@ -11,6 +11,8 @@ class Type extends Model
 {
     use HasFactory;
     use Sluggable;
+
+    //protected $with = ['menus'];
     public function menus(): BelongsToMany
     {
         return $this->belongsToMany(Menu::class);

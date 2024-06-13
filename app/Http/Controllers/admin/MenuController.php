@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 class MenuController extends Controller
 {
@@ -35,11 +37,16 @@ class MenuController extends Controller
     {
         $request->validate([
             'title'=> 'required',
-            'description'=> 'required',
+            'description'=> 'required|max:255',
             'image'=> 'required|image',
             'price'=> 'required|integer',
         ]);
         $image = $request->file('image')->store('images/menu');
+        $manager = new ImageManager(new Driver());
+        $image_resize = $manager->read($image);
+        $image_resize->resize(80,80);
+        $image_resize->save($image);
+        $image = "/public/".$image;
        $menu= Menu::query()->create([
             'title'=> $request->title,
             'description'=> $request->description,
@@ -53,9 +60,12 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $menu=Menu::query()->where('slug',$slug)->first();
+        $types=$menu->types;
+
+        return view('admin.menu.show', compact('menu'));
     }
 
     /**

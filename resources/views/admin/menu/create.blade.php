@@ -1,8 +1,9 @@
 @extends('admin.layouts.layout')
 @section('content')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <div class="container">
         @include('components.messages')
-        <form action="{{route('menus.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('menus.store')}}" method="post" enctype="multipart/form-data" id="form1" runat="server">
             @csrf
 
             <div class="card-body">
@@ -34,21 +35,32 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
 
+                                <label for="exampleInputFile">Photo</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input name="image" type="file" class="custom-file-input" id="imgInp">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                </div>
 
-                <div class="form-group">
-                    <label for="exampleInputFile">Photo</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
                         </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text">Upload</span>
+                        <div class="col">
+                            <img id="blah" src="/public/Front/img/add_photo-1024.webp" alt="your image"  class="img-thumbnail w-25">
                         </div>
+
                     </div>
-
                 </div>
+
+
 
             </div>
             <!-- /.card-body -->
@@ -59,5 +71,21 @@
         </form>
 
     </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $('#blah').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgInp").change(function() {
+            readURL(this);
+        });
+    </script>
 @endsection

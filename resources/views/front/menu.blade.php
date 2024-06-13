@@ -29,7 +29,7 @@
                             <i class="fa fa-coffee fa-2x text-primary"></i>
                             <div class="ps-3">
                                 <small class="text-body">Popular</small>
-                                <h6 class="mt-n1 mb-0">Breakfast</h6>
+                                <h6 class="mt-n1 mb-0">{{$types[0]->title}}</h6>
                             </div>
                         </a>
                     </li>
@@ -38,7 +38,7 @@
                             <i class="fa fa-hamburger fa-2x text-primary"></i>
                             <div class="ps-3">
                                 <small class="text-body">Special</small>
-                                <h6 class="mt-n1 mb-0">Launch</h6>
+                                <h6 class="mt-n1 mb-0">{{$types[1]->title}}</h6>
                             </div>
                         </a>
                     </li>
@@ -47,7 +47,7 @@
                             <i class="fa fa-utensils fa-2x text-primary"></i>
                             <div class="ps-3">
                                 <small class="text-body">Lovely</small>
-                                <h6 class="mt-n1 mb-0">Dinner</h6>
+                                <h6 class="mt-n1 mb-0">{{$types[2]->title}}</h6>
                             </div>
                         </a>
                     </li>
@@ -57,7 +57,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -145,7 +145,7 @@
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
-                                            <span class="text-primary">$115</span>
+                                            <span class="text-primary">$12522</span>
                                         </h5>
                                         <small class="fst-italic">Ipsum ipsum clita erat amet dolor justo diam</small>
                                     </div>
@@ -157,7 +157,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[0]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[1]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -181,7 +181,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[2]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -193,7 +193,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[3]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -205,7 +205,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[4]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -217,7 +217,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[5]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -229,7 +229,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{$types[1]->menus[5]->image}}" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -241,7 +241,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>
@@ -257,7 +257,7 @@
                         <div class="row g-4">
                             <div class="col-lg-6">
                                 <div class="d-flex align-items-center">
-                                    <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="" alt="" style="width: 80px;">
                                     <div class="w-100 d-flex flex-column text-start ps-4">
                                         <h5 class="d-flex justify-content-between border-bottom pb-2">
                                             <span>Chicken Burger</span>

@@ -10,3 +10,7 @@
 <p>composer require cviebrock/eloquent-sluggable</p>
 <a href="https://github.com/cviebrock/eloquent-sluggable">Documentation</a>
 <hr>
+<h3>Intervention Image</h3>
+<p>composer require intervention/image</p>
+<a href="https://image.intervention.io/v3">Documentation</a>
+<hr>

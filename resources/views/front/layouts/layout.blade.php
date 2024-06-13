@@ -72,7 +72,9 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{auth()->user()->name}}</a>
                             <div class="dropdown-menu m-0">
                                 <a href="" class="dropdown-item">Profile</a>
-                                <a href="" class="dropdown-item">Admin Panel</a>
+                                @if(auth()->user()->is_admin)
+                                <a href="{{route('chiefs.index')}}" class="dropdown-item">Admin Panel</a>
+                                @endif
                                 <a href="{{route('register.logout')}}" class="dropdown-item">Logout</a>
 
                             </div>
