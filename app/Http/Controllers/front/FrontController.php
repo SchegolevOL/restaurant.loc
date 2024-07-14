@@ -54,7 +54,8 @@ class FrontController extends Controller
     public function menu()
     {
         $title='menu';
-        $types = Type::query()->with('menus')->get();
+
+        $types = Type::query()->with(['menus'=> function($query){$query->select('image', 'title', 'description', 'price');}])->get();
 
 
         return view('front.menu', compact('title', 'types'));
