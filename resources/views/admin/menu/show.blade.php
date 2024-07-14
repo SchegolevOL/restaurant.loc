@@ -6,7 +6,7 @@
                 <div class="col-12 col-sm-6">
                     <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
                     <div class="col-12 text-center">
-                        <img src="{{asset($menu->image)}}" class="w-50" alt="butterfly">
+                        <img src="{{asset($menu->getImage())}}" class="w-50" alt="butterfly">
                     </div>
 
                 </div>

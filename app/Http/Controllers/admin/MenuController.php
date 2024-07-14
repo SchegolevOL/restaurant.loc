@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\Type;
 use Illuminate\Http\Request;
-use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -36,23 +35,14 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'=> 'required',
-            'description'=> 'required|max:255',
-            'image'=> 'required|image',
-            'price'=> 'required|integer',
+            'title' => 'required',
+            'description' => 'required|max:255',
+            'image' => 'required|image',
+            'price' => 'required|integer',
         ]);
-        $image = $request->file('image')->store('images/menu');
-        $manager = new ImageManager(new Driver());
-        $image_resize = $manager->read($image);
-        $image_resize->resize(80,80);
-        $image_resize->save($image);
-        $image = "/public/".$image;
-       $menu= Menu::query()->create([
-            'title'=> $request->title,
-            'description'=> $request->description,
-            'image'=> $image,
-            'price'=> $request->price,
-        ]);
+        $date = $request->all();
+        $date['image'] = Menu::uploadImage($request);
+        $menu = Menu::query()->create($date);
         $menu->types()->sync($request->types);
         return redirect()->route('menus.index');
     }
@@ -62,33 +52,53 @@ class MenuController extends Controller
      */
     public function show(string $slug)
     {
-        $menu=Menu::query()->where('slug',$slug)->first();
-        $types=$menu->types;
+        $menu = Menu::query()->where('slug', $slug)->first();
+        $types = $menu->types;
 
-        return view('admin.menu.show', compact('menu'));
+        return view('admin.menu.show', compact('menu', 'types'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $slug)
     {
-        //
+        $menu = Menu::query()->where('slug', $slug)->first();
+        $types = Type::all('id', 'title');
+        $types_menu = $menu->types->toArray();
+        $types_menu = array_column($types_menu, 'id');
+        return view('admin.menu.edit', compact('menu', 'types', 'types_menu'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $slug)
     {
-        //
+        $menu = Menu::query()->where('slug', $slug)->first();
+        $date = $request->all();
+        $validateImage = $request->file('image')==null?'':'required|image';
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required|max:255',
+            'image' => $validateImage,
+            'price' => 'required|integer',
+        ]);
+
+        $date['image'] = Menu::uploadImage($request, $request->old_image);
+        $menu->update($date);
+        $menu->types()->sync($request->types);
+        return redirect()->route('menus.index')->with('success', 'The change has been saved');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        $menu = Menu::query()->where('slug', $slug)->first();
+        Storage::delete($menu->image);
+        $menu->delete();
+        return redirect()->route('menus.index')->with('success', 'The record has been deleted');
     }
 }

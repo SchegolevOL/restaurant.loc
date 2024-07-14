@@ -40,15 +40,28 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-floating">
+                                <div class="form-floating input-group date">
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Your Email" @auth() echo value="{{auth()->user()->email}}" @endauth>
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
+
+
+                                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
+                                        <input name="date_time" type="text" class="form-control datetimepicker-input" id="datetime" data-target="#reservationdatetime" placeholder="Date & Time" data-toggle="datetimepicker">
+                                        <label for="datetime">Date & Time</label>
+                                        <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                    </div>
+
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
-                                    <input name="date_time" type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                                    <input name="date_time" type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#reservationdatetime" data-toggle="datetimepicker" />
                                     <label for="datetime">Date & Time</label>
+                                    <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -76,6 +89,21 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="col-md-6">
+        <div class="card card-primary">
+
+            <div class="card-body">
+
+                <!-- Date and time -->
+
+            </div>
+    </div>
+
+
+
 
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

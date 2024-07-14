@@ -158,7 +158,7 @@
                                 <label>Designation</label>
                                 <select name="designation" class="form-control">
                                     @foreach($designations as $designation)
-                                        <option value="{{$designation->id}}">{{$designation->title}}</option>
+                                        <option @if($designation->id==$chief->designation_id) selected @endif  value="{{$designation->id}}">{{$designation->title}}</option>
                                     @endforeach
 
                                 </select>

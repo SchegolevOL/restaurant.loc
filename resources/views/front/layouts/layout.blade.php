@@ -177,6 +177,26 @@
 <script src="/public/Front/lib/tempusdominus/js/moment-timezone.min.js"></script>
 <script src="/public/Front/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+<script>
+    //Date picker
+    $('#reservationdate').datetimepicker({
+        format: 'L'
+    });
+
+    //Date and time picker
+    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY hh:mm A'
+        }
+    })
+</script>
 <!-- Template Javascript -->
 <script src="/public/Front/js/main.js"></script>
 </body>

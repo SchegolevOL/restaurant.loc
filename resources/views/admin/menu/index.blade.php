@@ -18,21 +18,27 @@
                     <td>{{$menu->price}}</td>
 
                     <td class="project-actions text-right">
-                        <a class="btn btn-primary btn-sm" href="{{route('menus.show',['menu'=>$menu->slug])}}">
+                        <a class="btn btn-primary btn-sm float-left"  href="{{route('menus.show',['menu'=>$menu->slug])}}">
                             <i class="fas fa-folder">
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="{{route('menus.edit',['menu'=>$menu->slug])}}">
+                        <a class="btn btn-info btn-sm float-left" href="{{route('menus.edit',['menu'=>$menu->slug])}}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" href="#">
-                            <i class="fas fa-trash">
-                            </i>
-                            Delete
-                        </a>
+                        <form
+                            action="{{ route('menus.destroy', ['menu' => $menu->slug]) }}"
+                            method="post" class="float-left">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Confirm the deletion')">
+                                <i
+                                    class="fas fa-trash-alt"></i>Delete
+                            </button>
+                        </form>
 
                     </td>
                 </tr>

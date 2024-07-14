@@ -88,7 +88,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="{{$time}}s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4 w-75">
-                                <img class="img-fluid" src="{{asset($chief->image)}}" alt="">
+                                <img class="img-fluid" src="{{asset($chief->getImage())}}" alt="">
                             </div>
                             <h5 class="mb-0">{{$chief->first_name}} {{$chief->last_name}}</h5>
                             <small>Designation</small>
