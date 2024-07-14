@@ -43,12 +43,12 @@ class Chief extends Model
     public static function uploadImage(Request $request, $image = null)
     {
 
-        if ($request->hasFile('photo')) {
+        if ($request->hasFile('image')) {
             if ($image)Storage::delete($image);
-            $path=$request->file('photo')->store('images/chief');
+            $path=$request->file('image')->store('images/chief');
             $manager = new ImageManager(new Driver());
             $image = $manager->read($path);
-            $image->resize(200,200);
+            $image->resize(600, 600);
             $image->save($path);
 
             return asset($path);

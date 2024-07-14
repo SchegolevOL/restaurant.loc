@@ -144,7 +144,7 @@
                                 <div class="input-group">
                                     <div class="custom-file">
 
-                                        <input name="photo" type="file" class="custom-file-input" id="imgInp">
+                                        <input name="image" type="file" class="custom-file-input" id="imgInp">
                                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                     </div>
                                     <div class="input-group-append">
