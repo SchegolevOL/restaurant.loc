@@ -12,9 +12,10 @@
             </tr>
             </thead>
             <tbody>
+            @php $i =1; @endphp
             @foreach($chiefs as $chief)
                 <tr>
-                    <td>183</td>
+                    <td>{{$i++}}</td>
                     <td>{{$chief->first_name}}</td>
                     <td>{{$chief->last_name}}</td>
                     <td>{{$chief->patronymic}}</td>

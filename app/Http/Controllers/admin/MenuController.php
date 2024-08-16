@@ -15,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::query()->paginate();
+        $menus = Menu::query()->select('slug', 'title', 'description', 'image', 'price')->paginate();
         return view('admin.menu.index', compact('menus'));
     }
 
@@ -44,7 +44,7 @@ class MenuController extends Controller
         $date['image'] = Menu::uploadImage($request);
         $menu = Menu::query()->create($date);
         $menu->types()->sync($request->types);
-        return redirect()->route('menus.index');
+        return redirect()->route('menus.index')->with('success', 'The dish has been successfully added to the menu');
     }
 
     /**

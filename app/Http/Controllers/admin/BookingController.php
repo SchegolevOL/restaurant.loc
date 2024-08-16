@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -11,11 +12,9 @@ class BookingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd(Booking::all());
-
-        return 'Bookings';
+        return view('admin.booking.index');
     }
 
     /**

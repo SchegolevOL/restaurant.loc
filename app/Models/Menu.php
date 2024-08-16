@@ -44,7 +44,7 @@ class Menu extends Model
             $path = $request->file('image')->store('images/menu');
             $manager = new ImageManager(new Driver());
             $image = $manager->read($path);
-            $image->resize(80, 80);
+            $image->resize(600, 600);
             $image->save($path);
 
             return asset($path);

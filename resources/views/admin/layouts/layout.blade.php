@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="/public/AdminLTE/plugins/dropzone/min/dropzone.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/public/AdminLTE/dist/css/adminlte.min.css">
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="/public/AdminLTE/plugins/fullcalendar/main.css">
     <title>Document</title>
 </head>
 <body>
@@ -63,6 +65,9 @@
 <script src="/public/AdminLTE/plugins/dropzone/min/dropzone.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/public/AdminLTE/dist/js/adminlte.min.js"></script>
+<!-- fullCalendar 2.2.5 -->
+<script src="/public/AdminLTE/plugins/moment/moment.min.js"></script>
+<script src="/public/AdminLTE/plugins/fullcalendar/main.js"></script>
 <!-- AdminLTE for demo purposes -->
 {{--<script src="/public/AdminLTE/dist/js/demo.js"></script>--}}
 <!-- Page specific script -->

@@ -43,24 +43,13 @@
 
                 <div class="col-12">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
-                        <form action="{{route('login')}}" method="post">
+                        <div>
+                            Thank you for registering and confirm your email address.
+                        </div>
+                        <form action="" method="post">
                             @csrf
                             <div class="row g-3">
 
-
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input name="email" type="email" class="form-control" id="subject"
-                                               placeholder="Subject">
-                                        <label for="subject">Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input name="password" type="password" class="form-control" id="subject" placeholder="Subject">
-                                        <label for="subject">Password</label>
-                                    </div>
-                                </div>
 
 
                                 <div class="col-12">

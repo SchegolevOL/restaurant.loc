@@ -237,9 +237,9 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../tables/jsgrid.html" class="nav-link">
+                                <a href="{{route('bookings.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>Bookings</p>
                                 </a>
                             </li>
                         </ul>
@@ -258,6 +258,7 @@
 
 
         <!-- Main content -->
+        @include('components.messages')
         @yield('content')
         <!-- /.content -->
     </div>

@@ -14,7 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -23,7 +25,7 @@
     <!-- Libraries Stylesheet -->
     <link href="/public/Front/lib/animate/animate.min.css" rel="stylesheet">
     <link href="/public/Front/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/public/Front/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="/public/Front/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"/>
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/public/Front/css/bootstrap.min.css" rel="stylesheet">
@@ -34,7 +36,6 @@
 
 <body>
 <div class="container-xxl bg-white p-0">
-
 
 
     <!-- Navbar & Hero Start -->
@@ -51,36 +52,43 @@
                 <div class="navbar-nav ms-auto py-0 pe-4">
                     <a href="{{route('home')}}" class="nav-item nav-link @php if($title=='home')echo'active' @endphp">Home</a>
                     <a href="{{route('about')}}" class="nav-item nav-link @php if($title=='about')echo'active' @endphp">About</a>
-                    <a href="{{route('service')}}" class="nav-item nav-link @php if($title=='service')echo'active' @endphp">Service</a>
+                    <a href="{{route('service')}}"
+                       class="nav-item nav-link @php if($title=='service')echo'active' @endphp">Service</a>
                     <a href="{{route('menu')}}" class="nav-item nav-link @php if($title=='menu')echo'active' @endphp">Menu</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle @php if($title=='team'||$title=='booking'||$title=='testimonial')echo'active' @endphp" data-bs-toggle="dropdown">Pages</a>
+                        <a href="#"
+                           class="nav-link dropdown-toggle @php if($title=='team'||$title=='booking'||$title=='testimonial')echo'active' @endphp"
+                           data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
                             <a href="{{route('booking')}}" class="dropdown-item">Booking</a>
                             <a href="{{route('team')}}" class="dropdown-item">Our Team</a>
                             <a href="{{route('testimonial')}}" class="dropdown-item">Testimonial</a>
                         </div>
                     </div>
-                    <a href="{{route('contact')}}" class="nav-item nav-link @php if($title=='contact')echo'active' @endphp">Contact</a>
+                    <a href="{{route('contact')}}"
+                       class="nav-item nav-link @php if($title=='contact')echo'active' @endphp">Contact</a>
 
-@guest()
-                    <a href="{{route('register.create')}}" class="nav-item nav-link @php if($title=='register')echo'active' @endphp">Register</a>
-                    <a href="{{route('register.loginForm')}}" class="nav-item nav-link @php if($title=='login')echo'active' @endphp">Login</a>
+                    @guest()
+                        <a href="{{route('register.create')}}"
+                           class="nav-item nav-link @php if($title=='register')echo'active' @endphp">Register</a>
+                        <a href="{{route('register.loginForm')}}"
+                           class="nav-item nav-link @php if($title=='login')echo'active' @endphp">Login</a>
                     @endguest
-                        @auth()
+                    @auth()
                         <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{auth()->user()->name}}</a>
+                            <a href="#" class="nav-link dropdown-toggle"
+                               data-bs-toggle="dropdown">{{auth()->user()->name}}</a>
                             <div class="dropdown-menu m-0">
-                                <a href="" class="dropdown-item">Profile</a>
+                                <a href="{{route('profile')}}" class="dropdown-item">Profile</a>
                                 @if(auth()->user()->is_admin)
-                                <a href="{{route('chiefs.index')}}" class="dropdown-item">Admin Panel</a>
+                                    <a href="{{route('chiefs.index')}}" class="dropdown-item">Admin Panel</a>
                                 @endif
                                 <a href="{{route('register.logout')}}" class="dropdown-item">Logout</a>
 
                             </div>
                         </div>
 
-                        @endauth
+                    @endauth
                 </div>
 
                 <a href="" class="btn btn-primary py-2 px-4">Book A Table</a>
@@ -131,8 +139,11 @@
                     <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
                     <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text"
+                               placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">
+                            SignUp
+                        </button>
                     </div>
                 </div>
             </div>
@@ -184,7 +195,7 @@
     });
 
     //Date and time picker
-    $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+    $('#reservationdatetime').datetimepicker({icons: {time: 'far fa-clock'}});
 
     //Date range picker
     $('#reservation').daterangepicker()

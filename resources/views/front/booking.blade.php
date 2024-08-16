@@ -45,25 +45,19 @@
                                     <label for="email">Your Email</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
 
 
-                                    <div class="input-group date" id="reservationdatetime" data-target-input="nearest">
-                                        <input name="date_time" type="text" class="form-control datetimepicker-input" id="datetime" data-target="#reservationdatetime" placeholder="Date & Time" data-toggle="datetimepicker">
-                                        <label for="datetime">Date & Time</label>
-                                        <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                        </div>
-                                    </div>
 
+                            <div class="col-md-6 input-group date input-group-append" id="reservationdatetime" data-target-input="nearest" data-toggle="datetimepicker">
                                 <div class="form-floating date" id="date3" data-target-input="nearest">
-                                    <input name="date_time" type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#reservationdatetime" data-toggle="datetimepicker" />
+                                    <input name="date_time"  type="text" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
                                     <label for="datetime">Date & Time</label>
-                                    <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                    </div>
+
                                 </div>
+
                             </div>
+
+
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <select name="number_of_persons" class="form-select" id="select1">
@@ -90,17 +84,6 @@
         </div>
     </div>
 
-
-
-    <div class="col-md-6">
-        <div class="card card-primary">
-
-            <div class="card-body">
-
-                <!-- Date and time -->
-
-            </div>
-    </div>
 
 
 

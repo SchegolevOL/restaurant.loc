@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,10 +30,10 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'image'=>$image,
         ]);
-
+        event(new Registered($user));
         session()->flash('success', 'Регистрация пройдена');
         Auth::login($user);
-        return redirect()->route('home');
+        return redirect()->route('verification.notice');
     }
     public function loginForm(){
         $title='login';

@@ -11,9 +11,10 @@
             </tr>
             </thead>
             <tbody>
+            @php $i=1; @endphp
             @foreach($menus as $menu)
                 <tr>
-                    <td>183</td>
+                    <td>{{$i++}}</td>
                     <td>{{$menu->title}}</td>
                     <td>{{$menu->price}}</td>
 
