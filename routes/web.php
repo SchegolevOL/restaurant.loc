@@ -47,10 +47,12 @@ Route::prefix('admin')->group(function (){
     Route::resource('designations',\App\Http\Controllers\admin\DesignationController::class);
     Route::controller(\App\Http\Controllers\Admin\CalendarController::class)->group(function(){
 
-        Route::get('fullcalender', 'index')->name('fullcalender');
+        Route::get('/calendar', 'index')->name('calendar.bookings');
         Route::get('/events', 'getEvents');
         Route::delete('/booking/{id}','deleteEvent');
         Route::put('/booking/{id}','update');
+        Route::put('/booking/{id}/resize','resize');
+        Route::get('/events/search','search');
 
     });
 

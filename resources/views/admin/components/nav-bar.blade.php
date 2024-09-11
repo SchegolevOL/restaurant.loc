@@ -242,9 +242,18 @@
                                     <p>Bookings</p>
                                 </a>
                             </li>
+
                         </ul>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="{{route('calendar.bookings')}}" class="nav-link active">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p>
+                                Calendar
+                                <span class="badge badge-info right">0</span>
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
