@@ -14,3 +14,7 @@
 <p>composer require intervention/image</p>
 <a href="https://image.intervention.io/v3">Documentation</a>
 <hr>
+<hr>
+<h3>FullCalendar</h3>
+<p>npm install fullcalendar</p>
+<a href="https://fullcalendar.io/">Documentation</a>

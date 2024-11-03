@@ -55,6 +55,8 @@ Route::prefix('admin')->group(function (){
         Route::get('/events/search','search');
 
     });
+    Route::get('send',[App\Http\Controllers\admin\SendController::class,'sendMassages']);
+    Route::match(['get', 'post'],'send-mail',[App\Http\Controllers\admin\SendController::class,'sendMail']);
 
 });
 Route::resource('resister', \App\Http\Controllers\admin\RegisterController::class);

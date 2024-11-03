@@ -42,14 +42,15 @@ class BookingController extends Controller
         $date = strtotime($d);
         $date =date ('o-m-d H:i', $date);
 
+
         Booking::query()->create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'date_time'=>$date,
-            'number_of_persons'=>$request->number_of_persons,
-            'special_request'=>$request->special_request,
+            'name' => $request->name,
+            'email' => $request->email,
+            'date_time' => $date,
+            'number_of_persons' => $request->number_of_persons,
+            'special_request' => $request->special_request,
         ]);
-        dd($request->all());
+        return redirect();
     }
 
     /**
